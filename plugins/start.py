@@ -6,7 +6,7 @@ from pyrogram.types import ( InlineKeyboardButton, InlineKeyboardMarkup,ForceRep
 import humanize
 from helper.database import  insert ,find_one
 from pyrogram.file_id import FileId
-CHANNEL = os.environ.get("CHANNEL", "")
+CHANNEL = os.environ.get("CHANNEL", "-1001631332687")
 import datetime
 
 #Part of Day --------------------
@@ -26,12 +26,12 @@ async def start(client,message):
 	insert(int(message.chat.id))
 	await message.reply_text(text =f"""
 	Hello {wish} {message.from_user.first_name }
-	__I am file renamer bot, Please sent any telegram 
-	**Document Or Video** and enter new filename to rename it__
+	I am file renamer bot, Please sent any telegram 
+	Document Or Video and enter new filename to rename it
+	If You need Privite bot like this type => /clone
 	""",reply_to_message_id = message.message_id ,  
 	reply_markup=InlineKeyboardMarkup(
-	 [[ InlineKeyboardButton("Support 🇮🇳" ,url="https://t.me/lntechnical") ], 
-	[InlineKeyboardButton("Subscribe 🧐", url="https://youtube.com/c/LNtechnical") ]  ]))
+	 [[ InlineKeyboardButton("JOIN MY GROUP" ,url="https://t.me/FilmPiratesGroup") ]  ]))
 
 
 
@@ -43,7 +43,7 @@ async def send_doc(client,message):
        	try:
        		await client.get_chat_member(update_channel, user_id)
        	except UserNotParticipant:
-       		await message.reply_text("**__You are not subscribed my channel__** ",reply_to_message_id = message.message_id, reply_markup = InlineKeyboardMarkup([ [ InlineKeyboardButton("Support 🇮🇳" ,url=f"https://t.me/{update_channel}") ]   ]))
+       		await message.reply_text("You are not subscribed my channel",reply_to_message_id = message.message_id, reply_markup = InlineKeyboardMarkup([ [ InlineKeyboardButton("Support 🇮🇳" ,url=f"https://t.me/{update_channel}") ]   ]))
        		return
        date = message.date
        _used_date = find_one(user_id)
@@ -65,4 +65,4 @@ async def send_doc(client,message):
        	filename = file.file_name
        	filesize = humanize.naturalsize(file.file_size)
        	fileid = file.file_id
-       	await message.reply_text(f"""__What do you want me to do with this file?__\n**File Name** :- {filename}\n**File Size** :- {filesize}\n**Dc ID** :- {dcid} """,reply_to_message_id = message.message_id,reply_markup = InlineKeyboardMarkup([[ InlineKeyboardButton("📝 Rename",callback_data = "rename"),InlineKeyboardButton("✖️ Cancel",callback_data = "cancel")  ]]))
+       	await message.reply_text(f"""What do you want me to do with this file?__\n**File Name** :- {filename}\n**File Size** :- {filesize}\n**Dc ID** :- {dcid} """,reply_to_message_id = message.message_id,reply_markup = InlineKeyboardMarkup([[ InlineKeyboardButton("📝 Rename",callback_data = "rename"),InlineKeyboardButton("✖️ Cancel",callback_data = "cancel")  ]]))
