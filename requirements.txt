@@ -2,6 +2,12 @@ Pillow
 humanize
 hachoir
 pyrogram==1.4.16
-TgCrypto
 pymongo
 dnspython
+aiohttp
+beautifulsoup4
+git+git://github.com/google/chatbase-python.git
+numpy
+https://github.com/Mahesh0253/pyrogram/archive/asyncio.zip
+requests
+tgcrypto
