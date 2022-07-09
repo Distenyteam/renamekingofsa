@@ -20,7 +20,9 @@ async def refunc(client,message):
         		if mime == "video":
         			markup = InlineKeyboardMarkup([[ 
         			InlineKeyboardButton("📁 Document",callback_data = "doc"), 
-        			InlineKeyboardButton("🎥 Video",callback_data = "vid") ]])
+        			InlineKeyboardButton("🎥 Video",callback_data = "vid")],
+                               [InlineKeyboardButton("Back",callback_data = "rename"), 
+        			InlineKeyboardButton("✖️ Cancel",callback_data = "cancel") ]])
         		elif mime == "audio":
         			markup = InlineKeyboardMarkup([[ InlineKeyboardButton("📁 Document",callback_data = "doc")
         			,InlineKeyboardButton("🎵 audio",callback_data = "aud") ]])
