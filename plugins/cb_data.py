@@ -30,7 +30,7 @@ async def doc(bot,update):
      new_filename = name[1]
      file_path = f"downloads/{new_filename}"
      file = update.message.reply_to_message
-     ms = await update.message.edit("Trying To Download...")
+     ms = await update.message.edit("@FilmPiratesGroup")
      c_time = time.time()
      try:
      	path = await bot.download_media(message = file, progress=progress_for_pyrogram,progress_args=( "Trying To Download...",  ms, c_time   ))
@@ -51,7 +51,7 @@ async def doc(bot,update):
      		img.resize((320, 320))
      		img.save(ph_path, "JPEG")
      		c_time = time.time()
-     		await ms.edit("Trying To Upload...")
+     		await ms.edit("@FilmPiratesGroup")
      		c_time = time.time()
      		try:
      			await bot.send_document(update.message.chat.id,document = file_path,thumb=ph_path,caption = f"{new_filename}",progress=progress_for_pyrogram,progress_args=( "Trying To Uploading...",  ms, c_time   ))
@@ -64,7 +64,7 @@ async def doc(bot,update):
      			os.remove(ph_path)
      			     		     		
      else:
-     		await ms.edit("Trying To Upload...")
+     		await ms.edit("@FilmPiratesGroup")
      		c_time = time.time()
      		try:
      			await bot.send_document(update.message.chat.id,document = file_path,caption = f"{new_filename}",progress=progress_for_pyrogram,progress_args=( "Trying To Uploading...",  ms, c_time   ))
